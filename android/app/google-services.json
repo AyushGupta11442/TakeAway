@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "904959021524",
+    "project_id": "takeaway-aea0e",
+    "storage_bucket": "takeaway-aea0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904959021524:android:f02daf6f24b74954c0c641",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904959021524-k4kg1behtj7u2688uk4oupc1ncsbk0oj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXY_zhoy3YgFp_oo8eXBQFg9vNrA_A1Og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904959021524-k4kg1behtj7u2688uk4oupc1ncsbk0oj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "904959021524-o8ij8mg6hpaul194bhlsu15kuen4kdo1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

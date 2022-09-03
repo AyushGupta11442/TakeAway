@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:904959021524:android:f02daf6f24b74954c0c641",
+        "mobilesdk_app_id": "1:904959021524:android:673a81aed62c3401c0c641",
         "android_client_info": {
-          "package_name": "com.example.flutter_application_1"
+          "package_name": "com.TakeAway.TakeAway"
         }
       },
       "oauth_client": [

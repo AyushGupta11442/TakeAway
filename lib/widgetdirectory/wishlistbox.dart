@@ -8,7 +8,7 @@ wishlistbox(dynamic title, dynamic image) {
           height: 100,
           width: 300,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 19, 91, 96),
+              color: greencolor,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -41,7 +41,7 @@ wishlistbox(dynamic title, dynamic image) {
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
                     child: Container(
-                      color: Color.fromARGB(210, 253, 86, 86),
+                      color: redcolor,
                       height: 30,
                       width: 50,
                       child: Padding(

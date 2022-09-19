@@ -1,7 +1,14 @@
+import 'package:TakeAway/screens/bottom_navi_bar/cart.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/placedorder.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/homescreen.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/profile/profile.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/wishlist.dart';
 import 'package:TakeAway/widgetdirectory/Salesbanner.dart';
-import 'package:TakeAway/widgetdirectory/bottomnavigationbar.dart';
+import 'package:TakeAway/widgetdirectory/collectioncontainer.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:TakeAway/data.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -10,94 +17,33 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final storageRef = FirebaseStorage.instance.ref();
+  final navigationkey = GlobalKey<CurvedNavigationBarState>();
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 243),
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(15, 50, 15, 15),
-                child: TextField(
-                  decoration: InputDecoration(
-                      labelText: "SEARCH", border: OutlineInputBorder()),
-                ),
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 70,
-                      width: 50,
-                      child: InkWell(
-                        splashColor: Colors.black,
-                        onTap: () {
-                          Navigator.pushNamed(context, '/mencloathing');
-                        },
-                        child: Image(
-                            image: AssetImage(
-                                'assets/images/icons8-user-male-100.png')),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 70,
-                      width: 50,
-                      child: InkWell(
-                        splashColor: Colors.black,
-                        onTap: () {
-                          Navigator.pushNamed(context, '/womencloathing');
-                        },
-                        child: Image(
-                            image: AssetImage(
-                                'assets/images/icons8-attach-resume-female-100.png')),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 70,
-                      width: 50,
-                      child: InkWell(
-                        splashColor: Colors.black,
-                        onTap: () {
-                          Navigator.pushNamed(context, '/childcloathing');
-                        },
-                        child: Image(
-                          image: AssetImage(
-                            'assets/images/icons8-children-100.png',
-                          ),
-                          height: 60,
-                          width: 100,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              sales(context),
-            ],
-          ),
-        ],
+      extendBody: true,
+      body: screens[index],
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        color: backgroundcolor,
+        animationDuration: Duration(milliseconds: 250),
+        buttonBackgroundColor: redcolor,
+        onTap: (value) => setState(() {
+          index = value;
+        }),
+        items: items,
+        height: 60,
+        index: index,
       ),
-      bottomNavigationBar: BottomNavigationBar(items: BNavigator(context)),
     ));
   }
 }
+
+
+// appBar: AppBar(
+//         backgroundColor: Color.fromARGB(210, 253, 86, 86),
+//         leading: Center(
+//             child:
+//                 Image(image: AssetImage('assets/images/mainscreenlogo.png'))),
+//         leadingWidth: 100,
+//       ),

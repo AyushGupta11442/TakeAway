@@ -10,7 +10,7 @@ class Loading extends StatelessWidget {
       color: Color.fromARGB(255, 255, 249, 243),
       child: Center(
           child: SpinKitSquareCircle(
-        color: Color.fromARGB(255, 19, 91, 96),
+        color: Color.fromARGB(255, 211, 184, 249),
         size: 50,
       )),
     );

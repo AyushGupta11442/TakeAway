@@ -40,10 +40,6 @@ class databaseservice {
     });
   }
 
-  String? currentuid() {
-    return uid;
-  }
-
   // stream which notify change in document in firestore
   Stream<QuerySnapshot> get datas {
     return accountcollection.snapshots();

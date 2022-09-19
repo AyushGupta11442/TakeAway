@@ -2,7 +2,7 @@ import 'package:TakeAway/data.dart';
 import 'package:TakeAway/widgetdirectory/placedorderbox.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgetdirectory/bottomnavigationbar.dart';
+import '../../widgetdirectory/collectioncontainer.dart';
 import '../../widgetdirectory/wishlistbox.dart';
 
 class placedorder extends StatefulWidget {
@@ -29,35 +29,35 @@ class _placedorderState extends State<placedorder> {
     }));
 
     return (Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 243),
-      body: ListView(children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 150,
-          decoration: BoxDecoration(
-              color: Color.fromARGB(255, 19, 91, 96),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              )),
-          child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'Placed Order',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              )),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Column(
-          children: buyeditems,
-        )
-      ]),
-      bottomNavigationBar: BottomNavigationBar(items: BNavigator(context)),
+      backgroundColor: backgroundcolor,
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            decoration: BoxDecoration(
+                color: greencolor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
+            child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Placed Order',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                )),
+          ),
+          Expanded(
+            child: ListView(
+              children: buyeditems,
+            ),
+          )
+        ],
+      ),
     ));
   }
 }

@@ -1,12 +1,12 @@
+import 'package:TakeAway/data.dart';
 import 'package:TakeAway/firebase/authantication.dart';
-import 'package:TakeAway/widgetdirectory/bottomnavigationbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:TakeAway/firebase/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../../modal/user.dart';
+
+final FirebaseAuth __auth = FirebaseAuth.instance;
 
 class Account extends StatefulWidget {
   const Account({Key? key}) : super(key: key);
@@ -16,13 +16,38 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("accountdata")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
+
   final __formkey = GlobalKey<FormState>();
-  final Authservice __auth = Authservice();
   String value = '';
   String? uid = Authservice().currentuid();
   @override
+  void updatedata(Map<String, Object> newvalue) {
+    FirebaseFirestore.instance
+        .collection('accountdata')
+        .doc(uid)
+        .update(newvalue)
+        .catchError((e) {
+      print(e);
+    });
+  }
+
   Widget build(BuildContext context) {
-    void showbottomscreen(BuildContext context, String tittle) {
+    Future<String?> id = getCurrentUID();
+    void showbottomscreen(BuildContext context, String tittle, String string1) {
       showModalBottomSheet(
           context: context,
           builder: (context) {
@@ -52,21 +77,27 @@ class _AccountState extends State<Account> {
                       SizedBox(
                         height: 20,
                       ),
-                      ElevatedButton(onPressed: () {}, child: Text('update'))
+                      ElevatedButton(
+                          onPressed: () {
+                            updatedata({string1: value});
+                          },
+                          child: Text('update'))
                     ],
                   )),
             );
           });
     }
 
+    ;
+
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 243),
+      backgroundColor: backgroundcolor,
       body: Column(children: [
         Container(
           width: MediaQuery.of(context).size.width,
           height: 250,
           decoration: BoxDecoration(
-            color: Color.fromARGB(210, 253, 86, 86),
+            color: redcolor,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -100,13 +131,13 @@ class _AccountState extends State<Account> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Name',
+                          "${loggedInUser.name}",
                           style: TextStyle(fontSize: 25),
                         ),
                       ),
                     ),
                   ),
-                  onTap: () => showbottomscreen(context, 'Enter name')),
+                  onTap: () => showbottomscreen(context, 'Enter name', 'name')),
               SizedBox(
                 height: 20,
               ),
@@ -120,7 +151,7 @@ class _AccountState extends State<Account> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Email',
+                        "${loggedInUser.email}",
                         style: TextStyle(fontSize: 25),
                       ),
                     ),
@@ -140,7 +171,7 @@ class _AccountState extends State<Account> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Mobile no.',
+                        "${loggedInUser.mobileno}",
                         style: TextStyle(fontSize: 25),
                       ),
                     ),
@@ -180,7 +211,7 @@ class _AccountState extends State<Account> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'address',
+                        "${loggedInUser.address}",
                         style: TextStyle(fontSize: 25),
                       ),
                     ),
@@ -193,4 +224,10 @@ class _AccountState extends State<Account> {
       ]),
     );
   }
+}
+
+Future<String?> getCurrentUID() async {
+  var currentUid = await __auth.currentUser?.uid;
+  print(currentUid);
+  return currentUid;
 }

@@ -1,3 +1,12 @@
+import 'package:TakeAway/screens/bottom_navi_bar/cart.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/placedorder.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/homescreen.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/profile/profile.dart';
+import 'package:TakeAway/screens/bottom_navi_bar/wishlist.dart';
+import 'package:TakeAway/screens/cloathing/menscloathing.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
+
 Map menshirt = {
   'object.1': {
     'name': 'Louis Philippe Sport',
@@ -11,7 +20,7 @@ Map menshirt = {
     'name': 'HRX by Hrithik Roshan',
     'price': 802,
     'discription':
-        '100% Original Products /n Pay on delivery might be available /nEasy 30 days returns and exchanges /n Try & Buy might be available',
+        '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
     'imagelink':
         'https://images.pexels.com/photos/9886881/pexels-photo-9886881.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
@@ -19,7 +28,7 @@ Map menshirt = {
     'name': 'Huetrap',
     'price': 740,
     'discription':
-        '100% Original Products /n Pay on delivery might be available /nEasy 30 days returns and exchanges /n Try & Buy might be available',
+        '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
     'imagelink':
         'https://images.pexels.com/photos/9604182/pexels-photo-9604182.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
@@ -27,7 +36,7 @@ Map menshirt = {
     'name': 'Huetrap',
     'price': 800,
     'discription':
-        '100% Original Products /n Pay on delivery might be available /nEasy 30 days returns and exchanges /n Try & Buy might be available',
+        '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
     'imagelink':
         'https://images.pexels.com/photos/9604182/pexels-photo-9604182.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
@@ -35,7 +44,7 @@ Map menshirt = {
     'name': 'Huetrap',
     'price': 700,
     'discription':
-        '100% Original Products /n Pay on delivery might be available /nEasy 30 days returns and exchanges /n Try & Buy might be available',
+        '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
     'imagelink':
         'https://images.pexels.com/photos/10397680/pexels-photo-10397680.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
@@ -45,7 +54,7 @@ Map womenmenshirt = {
     'name': 'SHAYE',
     'price': 799,
     'discription':
-        '1100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
+        '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
     'imagelink':
         'https://images.pexels.com/photos/9725690/pexels-photo-9725690.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
@@ -93,7 +102,7 @@ Map menjeans = {
         'https://images.pexels.com/photos/1879874/pexels-photo-1879874.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.2': {
-    'name': 'Men Navy Blue Skinny Fit ',
+    'name': 'Men Blue Skinny Fit ',
     'price': 1802,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -117,7 +126,7 @@ Map menjeans = {
         'https://images.pexels.com/photos/10669296/pexels-photo-10669296.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.5': {
-    'name': 'HIGHLANDER :Men Blue ',
+    'name': 'HIGHLANDER:Men Blue',
     'price': 1439,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -136,7 +145,7 @@ Map womenjeans = {
         'https://images.pexels.com/photos/2363825/pexels-photo-2363825.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.2': {
-    'name': 'SASSAFRAS:Women Blues',
+    'name': 'SASSAFRAS:Blues',
     'price': 899,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -152,7 +161,7 @@ Map womenjeans = {
         'https://images.pexels.com/photos/1578854/pexels-photo-1578854.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.4': {
-    'name': 'SASSAFRAS:Women Blue ',
+    'name': 'SASSAFRAS',
     'price': 1775,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -160,7 +169,7 @@ Map womenjeans = {
         'https://images.pexels.com/photos/4505454/pexels-photo-4505454.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.5': {
-    'name': 'HERE&NOW:Women Stylish ',
+    'name': 'HERE&NOW',
     'price': 2000,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -171,7 +180,7 @@ Map womenjeans = {
 
 Map mensshoes = {
   'object.1': {
-    'name': 'Roadster:White Sneakers',
+    'name': 'Roadster:White',
     'price': 799,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -179,7 +188,7 @@ Map mensshoes = {
         'https://images.pexels.com/photos/2969315/pexels-photo-2969315.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.2': {
-    'name': 'Roadster:Men Black Sneakers',
+    'name': 'Roadster:Men black',
     'price': 899,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -187,7 +196,7 @@ Map mensshoes = {
         'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.3': {
-    'name': 'Mactree:Men White Colourblocked PU Sneakers',
+    'name': 'Mactree',
     'price': 700,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -195,7 +204,7 @@ Map mensshoes = {
         'https://images.pexels.com/photos/1578854/pexels-photo-1578854.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.4': {
-    'name': 'Red Tape:men White Sneakers',
+    'name': 'Red Tape',
     'price': 1775,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -203,7 +212,7 @@ Map mensshoes = {
         'https://images.pexels.com/photos/267320/pexels-photo-267320.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.5': {
-    'name': 'Red Tape:men White Sports Shoes',
+    'name': 'Red Tape:men White',
     'price': 2000,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -257,7 +266,7 @@ Map womenshoes = {
 
 Map menaccessories = {
   'object.1': {
-    'name': 'WROGN: Analogue Watch WR',
+    'name': 'WROGN:Analogue WR',
     'price': 896,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -265,7 +274,7 @@ Map menaccessories = {
         'https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   'object.2': {
-    'name': 'boAt:Unisex Navy Blue Airdopes 131 ',
+    'name': 'boAt:Blue Airdopes 131 ',
     'price': 899,
     'discription':
         '100% Original Products \n Pay on delivery might be available \nEasy 30 days returns and exchanges \n Try & Buy might be available',
@@ -320,3 +329,41 @@ void addValueTocartMap<K, V>(Map<K, List<V>> map, K key, V value) =>
 int num = 1;
 List<int> number = [];
 Map<dynamic, List> buyed = {};
+int index = 2;
+final screens = [
+  profile(),
+  placedorder(),
+  HomeScreen(),
+  Cart(),
+  wishlist(),
+  MensCloathing(),
+];
+final items = [
+  Icon(
+    Icons.account_box,
+    size: 30,
+  ),
+  Icon(
+    Icons.list,
+    size: 30,
+  ),
+  Icon(
+    Icons.home,
+    size: 30,
+  ),
+  Icon(
+    Icons.shopping_cart,
+    size: 30,
+  ),
+  Icon(
+    Icons.favorite,
+    size: 30,
+  )
+];
+
+final navigationkey = GlobalKey<CurvedNavigationBarState>();
+
+dynamic greencolor = Color.fromARGB(255, 29, 126, 133);
+dynamic bluecolor = Color.fromARGB(255, 18, 98, 168);
+dynamic redcolor = Color.fromARGB(255, 212, 61, 101);
+dynamic backgroundcolor = Color.fromARGB(255, 255, 250, 245);

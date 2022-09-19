@@ -1,8 +1,11 @@
+import 'package:TakeAway/modal/getdata.dart';
 import 'package:TakeAway/widgetdirectory/wishlistbox.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../data.dart';
-import '../../widgetdirectory/bottomnavigationbar.dart';
+import '../../widgetdirectory/collectioncontainer.dart';
 
 class wishlist extends StatefulWidget {
   const wishlist({Key? key}) : super(key: key);
@@ -31,13 +34,13 @@ class _wishlistState extends State<wishlist> {
     }));
 
     return (Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 243),
-      body: ListView(children: [
+      backgroundColor: backgroundcolor,
+      body: Column(children: [
         Container(
           width: MediaQuery.of(context).size.width,
           height: 150,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 19, 91, 96),
+              color: greencolor,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -55,11 +58,12 @@ class _wishlistState extends State<wishlist> {
         SizedBox(
           height: 20,
         ),
-        Column(
-          children: wishlistitems,
+        Expanded(
+          child: ListView(
+            children: wishlistitems,
+          ),
         )
       ]),
-      bottomNavigationBar: BottomNavigationBar(items: BNavigator(context)),
     ));
   }
 }

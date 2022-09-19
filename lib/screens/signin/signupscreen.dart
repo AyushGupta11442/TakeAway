@@ -1,6 +1,7 @@
 import 'package:TakeAway/firebase/authantication.dart';
 import 'package:TakeAway/widgetdirectory/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:TakeAway/data.dart';
 
 class Signup extends StatefulWidget {
   final Function toggleview;
@@ -33,34 +34,60 @@ class _SignupState extends State<Signup> {
               key: __formkey,
               child: Column(
                 children: [
-                  Image(image: AssetImage('assets/images/first.png')),
+                  Image(image: AssetImage('assets/images/logo.png')),
+                  Text(
+                    "Signup in to TakeAway",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text('Already have an account?'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                      onPressed: () async {
+                        widget.toggleview();
+                      },
+                      child: Text('Sign In')),
+                  Divider(
+                    height: 20,
+                    thickness: 2,
+                  ),
                   Expanded(
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 521,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 19, 91, 96),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(25),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextFormField(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                            child: TextFormField(
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.man),
+                                hintText: 'Enter your Name',
+                                filled: true,
+                                fillColor: Color.fromRGBO(255, 255, 255, 1),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.white)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.pink)),
+                              ),
+                              validator: (val) =>
+                                  val!.isEmpty ? 'Enter valid email' : null,
+                              onChanged: (val) {
+                                setState(() => name = val);
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email),
                                 hintText: 'Email',
                                 filled: true,
                                 fillColor: Color.fromRGBO(255, 255, 255, 1),
@@ -76,11 +103,15 @@ class _SignupState extends State<Signup> {
                                 setState(() => email = val);
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextFormField(
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                            child: TextFormField(
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.password),
                                 hintText: 'Password',
                                 filled: true,
                                 fillColor: Color.fromRGBO(255, 255, 255, 1),
@@ -98,54 +129,49 @@ class _SignupState extends State<Signup> {
                                 setState(() => password = val);
                               },
                             ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            ElevatedButton(
-                                onPressed: () async {
-                                  if (__formkey.currentState!.validate()) {
-                                    // this check every validate and run each function
-                                    setState(() {
-                                      loading = true;
-                                    });
-                                    dynamic result = await __auth
-                                        .registerwithemailandpassword(
-                                            email, password);
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          ElevatedButton(
+                              onPressed: () async {
+                                if (__formkey.currentState!.validate()) {
+                                  // this check every validate and run each function
+                                  setState(() {
+                                    loading = true;
+                                  });
+                                  dynamic result =
+                                      await __auth.registerwithemailandpassword(
+                                          email, password);
 
-                                    if (result == null) {
-                                      setState(() {
-                                        error = 'Please supply a valid email';
-                                        loading = false;
-                                      });
-                                    } else {
+                                  if (result == null) {
+                                    setState(() {
+                                      error = 'Please supply a valid email';
                                       loading = false;
-                                    }
+                                    });
+                                  } else {
+                                    loading = false;
                                   }
-                                },
-                                child: Text('Sign Up')),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              error,
-                              style:
-                                  TextStyle(color: Colors.red, fontSize: 14.0),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            ElevatedButton(
-                                onPressed: () async {
-                                  widget.toggleview();
-                                },
-                                child: Text('Sign In')),
-                          ],
-                        ),
+                                }
+                              },
+                              child: Text('Sign Up')),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ],
               ),
-            ));
+            ),
+          );
   }
 }

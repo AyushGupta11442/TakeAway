@@ -2,6 +2,8 @@ import 'package:TakeAway/firebase/database.dart';
 import 'package:TakeAway/modal/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+String? name;
+
 class Authservice {
   String? uid;
   //created firebase auth instance
@@ -23,9 +25,10 @@ class Authservice {
       UserCredential result = await __auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+      uid = user!.uid;
       // create new document for the user with the uid
-      await databaseservice(uid: user!.uid).updateuserdata(
-          'Enter user data', email, 'enter mobile no', 'enter the email');
+      await databaseservice(uid: user.uid)
+          .updateuserdata(name!, email, 'Enter Phone No.', 'enter the addrees');
       uid = user.uid;
       return __userfromfirebase(user);
     } catch (e) {
@@ -53,6 +56,7 @@ class Authservice {
       UserCredential result = await __auth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+      uid = user!.uid;
       return __userfromfirebase(user);
     } catch (e) {
       print(e.toString());

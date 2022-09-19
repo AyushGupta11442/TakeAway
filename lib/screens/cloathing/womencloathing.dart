@@ -1,6 +1,9 @@
 import 'package:TakeAway/widgetdirectory/Salesbanner.dart';
-import 'package:TakeAway/widgetdirectory/bottomnavigationbar.dart';
+import 'package:TakeAway/widgetdirectory/collectioncontainer.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:TakeAway/data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WomenCloathing extends StatefulWidget {
   const WomenCloathing({Key? key}) : super(key: key);
@@ -20,18 +23,30 @@ class _WomenCloathingState extends State<WomenCloathing> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             redcolorcontainer(
-                'assets/images/tshirt.png', 'Tshirt', '/womentshirt', context),
+                FontAwesomeIcons.shirt, 'Tshirt', '/womentshirt', context),
             bluecolorcontainer(
-                'assets/images/jeanes.png', 'Jeanes', '/womenjeans', context),
+                FontAwesomeIcons.shirt, 'Jeanes', '/womenjeans', context),
             redcolorcontainer(
-                'assets/images/shoes.png', 'Shoes', '/womenshoes', context),
-            bluecolorcontainer('assets/images/watches.png', 'Accessories',
-                '/womenacc', context),
+                FontAwesomeIcons.shoePrints, 'Shoes', '/womenshoes', context),
+            bluecolorcontainer(
+                Icons.watch, 'Accessories', '/womenacc', context),
             sales(context),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: BNavigator(context)),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        color: Colors.white,
+        animationDuration: Duration(milliseconds: 250),
+        buttonBackgroundColor: Color.fromARGB(210, 253, 86, 86),
+        onTap: (value) => setState(() {
+          index = value;
+          Navigator.pushNamed(context, '/mainscreen');
+        }),
+        items: items,
+        height: 60,
+        index: index,
+      ),
     )));
   }
 }

@@ -1,6 +1,8 @@
+import 'package:TakeAway/data.dart';
 import 'package:TakeAway/firebase/authantication.dart';
-import 'package:TakeAway/screens/bottom_navi_bar/profile/profilethings.dart';
-import 'package:TakeAway/widgetdirectory/bottomnavigationbar.dart';
+import 'package:TakeAway/widgetdirectory/collectioncontainer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class profile extends StatefulWidget {
@@ -13,9 +15,11 @@ class profile extends StatefulWidget {
 class _profileState extends State<profile> {
   final Authservice __auth = Authservice();
   @override
+  User? user = FirebaseAuth.instance.currentUser;
+
   Widget build(BuildContext context) {
     return (Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 243),
+      backgroundColor: backgroundcolor,
       body: Column(
         children: [
           // ProfileData(),
@@ -23,7 +27,7 @@ class _profileState extends State<profile> {
             width: MediaQuery.of(context).size.width,
             height: 250,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 19, 91, 96),
+              color: greencolor,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -65,7 +69,7 @@ class _profileState extends State<profile> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Account',
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
             ),
@@ -85,7 +89,7 @@ class _profileState extends State<profile> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Raise A Querry',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 20),
                   ),
                 )),
           ),
@@ -94,7 +98,6 @@ class _profileState extends State<profile> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(items: BNavigator(context)),
     ));
   }
 }
